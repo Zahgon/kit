@@ -1,5 +1,3 @@
-// Package expvar provides expvar backends for metrics.
-// Label values are not supported.
 package expvar
 
 import (
@@ -10,53 +8,34 @@ import (
 	"github.com/go-kit/kit/metrics/generic"
 )
 
-// Counter implements the counter metric with an expvar float.
-// Label values are not supported.
 type Counter struct {
 	f *expvar.Float
 }
 
-// NewCounter creates an expvar Float with the given name, and returns an object
-// that implements the Counter interface.
-func NewCounter(name string) *Counter {
-	return &Counter{
-		f: expvar.NewFloat(name),
-	}
+func NewCounter(name string) *Counter { _ = "STUB: not implemented"; return nil }
+
+func (c *Counter) With(labelValues ...string) metrics.Counter {
+	_ = "STUB: not implemented"
+	return *new(metrics.Counter)
 }
 
-// With is a no-op.
-func (c *Counter) With(labelValues ...string) metrics.Counter { return c }
+func (c *Counter) Add(delta float64) { _ = "STUB: not implemented"; return }
 
-// Add implements Counter.
-func (c *Counter) Add(delta float64) { c.f.Add(delta) }
-
-// Gauge implements the gauge metric with an expvar float.
-// Label values are not supported.
 type Gauge struct {
 	f *expvar.Float
 }
 
-// NewGauge creates an expvar Float with the given name, and returns an object
-// that implements the Gauge interface.
-func NewGauge(name string) *Gauge {
-	return &Gauge{
-		f: expvar.NewFloat(name),
-	}
+func NewGauge(name string) *Gauge { _ = "STUB: not implemented"; return nil }
+
+func (g *Gauge) With(labelValues ...string) metrics.Gauge {
+	_ = "STUB: not implemented"
+	return *new(metrics.Gauge)
 }
 
-// With is a no-op.
-func (g *Gauge) With(labelValues ...string) metrics.Gauge { return g }
+func (g *Gauge) Set(value float64) { _ = "STUB: not implemented"; return }
 
-// Set implements Gauge.
-func (g *Gauge) Set(value float64) { g.f.Set(value) }
+func (g *Gauge) Add(delta float64) { _ = "STUB: not implemented"; return }
 
-// Add implements metrics.Gauge.
-func (g *Gauge) Add(delta float64) { g.f.Add(delta) }
-
-// Histogram implements the histogram metric with a combination of the generic
-// Histogram object and several expvar Floats, one for each of the 50th, 90th,
-// 95th, and 99th quantiles of observed values, with the quantile attached to
-// the name as a suffix. Label values are not supported.
 type Histogram struct {
 	mtx sync.Mutex
 	h   *generic.Histogram
@@ -66,29 +45,11 @@ type Histogram struct {
 	p99 *expvar.Float
 }
 
-// NewHistogram returns a Histogram object with the given name and number of
-// buckets in the underlying histogram object. 50 is a good default number of
-// buckets.
-func NewHistogram(name string, buckets int) *Histogram {
-	return &Histogram{
-		h:   generic.NewHistogram(name, buckets),
-		p50: expvar.NewFloat(name + ".p50"),
-		p90: expvar.NewFloat(name + ".p90"),
-		p95: expvar.NewFloat(name + ".p95"),
-		p99: expvar.NewFloat(name + ".p99"),
-	}
+func NewHistogram(name string, buckets int) *Histogram { _ = "STUB: not implemented"; return nil }
+
+func (h *Histogram) With(labelValues ...string) metrics.Histogram {
+	_ = "STUB: not implemented"
+	return *new(metrics.Histogram)
 }
 
-// With is a no-op.
-func (h *Histogram) With(labelValues ...string) metrics.Histogram { return h }
-
-// Observe implements Histogram.
-func (h *Histogram) Observe(value float64) {
-	h.mtx.Lock()
-	defer h.mtx.Unlock()
-	h.h.Observe(value)
-	h.p50.Set(h.h.Quantile(0.50))
-	h.p90.Set(h.h.Quantile(0.90))
-	h.p95.Set(h.h.Quantile(0.95))
-	h.p99.Set(h.h.Quantile(0.99))
-}
+func (h *Histogram) Observe(value float64) { _ = "STUB: not implemented"; return }

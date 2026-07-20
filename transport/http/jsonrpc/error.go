@@ -1,42 +1,24 @@
 package jsonrpc
 
-// Error defines a JSON RPC error that can be returned
-// in a Response from the spec
-// http://www.jsonrpc.org/specification#error_object
 type Error struct {
 	Code    int         `json:"code"`
 	Message string      `json:"message"`
 	Data    interface{} `json:"data,omitempty"`
 }
 
-// Error implements error.
-func (e Error) Error() string {
-	if e.Message != "" {
-		return e.Message
-	}
-	return errorMessage[e.Code]
-}
+func (e Error) Error() string { _ = "STUB: not implemented"; return "" }
 
-// ErrorCode returns the JSON RPC error code associated with the error.
-func (e Error) ErrorCode() int {
-	return e.Code
-}
+func (e Error) ErrorCode() int { _ = "STUB: not implemented"; return 0 }
 
 const (
-	// ParseError defines invalid JSON was received by the server.
-	// An error occurred on the server while parsing the JSON text.
 	ParseError int = -32700
 
-	// InvalidRequestError defines the JSON sent is not a valid Request object.
 	InvalidRequestError int = -32600
 
-	// MethodNotFoundError defines the method does not exist / is not available.
 	MethodNotFoundError int = -32601
 
-	// InvalidParamsError defines invalid method parameter(s).
 	InvalidParamsError int = -32602
 
-	// InternalError defines a server error
 	InternalError int = -32603
 )
 
@@ -48,53 +30,34 @@ var errorMessage = map[int]string{
 	InternalError:       "Internal JSON-RPC error.",
 }
 
-// ErrorMessage returns a message for the JSON RPC error code. It returns the empty
-// string if the code is unknown.
-func ErrorMessage(code int) string {
-	return errorMessage[code]
-}
+func ErrorMessage(code int) string { _ = "STUB: not implemented"; return "" }
 
 type parseError string
 
-func (e parseError) Error() string {
-	return string(e)
-}
-func (e parseError) ErrorCode() int {
-	return ParseError
-}
+func (e parseError) Error() string { _ = "STUB: not implemented"; return "" }
+
+func (e parseError) ErrorCode() int { _ = "STUB: not implemented"; return 0 }
 
 type invalidRequestError string
 
-func (e invalidRequestError) Error() string {
-	return string(e)
-}
-func (e invalidRequestError) ErrorCode() int {
-	return InvalidRequestError
-}
+func (e invalidRequestError) Error() string { _ = "STUB: not implemented"; return "" }
+
+func (e invalidRequestError) ErrorCode() int { _ = "STUB: not implemented"; return 0 }
 
 type methodNotFoundError string
 
-func (e methodNotFoundError) Error() string {
-	return string(e)
-}
-func (e methodNotFoundError) ErrorCode() int {
-	return MethodNotFoundError
-}
+func (e methodNotFoundError) Error() string { _ = "STUB: not implemented"; return "" }
+
+func (e methodNotFoundError) ErrorCode() int { _ = "STUB: not implemented"; return 0 }
 
 type invalidParamsError string
 
-func (e invalidParamsError) Error() string {
-	return string(e)
-}
-func (e invalidParamsError) ErrorCode() int {
-	return InvalidParamsError
-}
+func (e invalidParamsError) Error() string { _ = "STUB: not implemented"; return "" }
+
+func (e invalidParamsError) ErrorCode() int { _ = "STUB: not implemented"; return 0 }
 
 type internalError string
 
-func (e internalError) Error() string {
-	return string(e)
-}
-func (e internalError) ErrorCode() int {
-	return InternalError
-}
+func (e internalError) Error() string { _ = "STUB: not implemented"; return "" }
+
+func (e internalError) ErrorCode() int { _ = "STUB: not implemented"; return 0 }

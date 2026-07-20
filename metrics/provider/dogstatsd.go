@@ -10,34 +10,24 @@ type dogstatsdProvider struct {
 	stop func()
 }
 
-// NewDogstatsdProvider wraps the given Dogstatsd object and stop func and
-// returns a Provider that produces Dogstatsd metrics. A typical stop function
-// would be ticker.Stop from the ticker passed to the SendLoop helper method.
 func NewDogstatsdProvider(d *dogstatsd.Dogstatsd, stop func()) Provider {
-	return &dogstatsdProvider{
-		d:    d,
-		stop: stop,
-	}
+	_ = "STUB: not implemented"
+	return *new(Provider)
 }
 
-// NewCounter implements Provider, returning a new Dogstatsd Counter with a
-// sample rate of 1.0.
 func (p *dogstatsdProvider) NewCounter(name string) metrics.Counter {
-	return p.d.NewCounter(name, 1.0)
+	_ = "STUB: not implemented"
+	return *new(metrics.Counter)
 }
 
-// NewGauge implements Provider.
 func (p *dogstatsdProvider) NewGauge(name string) metrics.Gauge {
-	return p.d.NewGauge(name)
+	_ = "STUB: not implemented"
+	return *new(metrics.Gauge)
 }
 
-// NewHistogram implements Provider, returning a new Dogstatsd Histogram (note:
-// not a Timing) with a sample rate of 1.0. The buckets argument is ignored.
 func (p *dogstatsdProvider) NewHistogram(name string, _ int) metrics.Histogram {
-	return p.d.NewHistogram(name, 1.0)
+	_ = "STUB: not implemented"
+	return *new(metrics.Histogram)
 }
 
-// Stop implements Provider, invoking the stop function passed at construction.
-func (p *dogstatsdProvider) Stop() {
-	p.stop()
-}
+func (p *dogstatsdProvider) Stop() { _ = "STUB: not implemented"; return }

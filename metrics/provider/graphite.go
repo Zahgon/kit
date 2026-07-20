@@ -10,32 +10,24 @@ type graphiteProvider struct {
 	stop func()
 }
 
-// NewGraphiteProvider wraps the given Graphite object and stop func and returns
-// a Provider that produces Graphite metrics. A typical stop function would be
-// ticker.Stop from the ticker passed to the SendLoop helper method.
 func NewGraphiteProvider(g *graphite.Graphite, stop func()) Provider {
-	return &graphiteProvider{
-		g:    g,
-		stop: stop,
-	}
+	_ = "STUB: not implemented"
+	return *new(Provider)
 }
 
-// NewCounter implements Provider.
 func (p *graphiteProvider) NewCounter(name string) metrics.Counter {
-	return p.g.NewCounter(name)
+	_ = "STUB: not implemented"
+	return *new(metrics.Counter)
 }
 
-// NewGauge implements Provider.
 func (p *graphiteProvider) NewGauge(name string) metrics.Gauge {
-	return p.g.NewGauge(name)
+	_ = "STUB: not implemented"
+	return *new(metrics.Gauge)
 }
 
-// NewHistogram implements Provider.
 func (p *graphiteProvider) NewHistogram(name string, buckets int) metrics.Histogram {
-	return p.g.NewHistogram(name, buckets)
+	_ = "STUB: not implemented"
+	return *new(metrics.Histogram)
 }
 
-// Stop implements Provider, invoking the stop function passed at construction.
-func (p *graphiteProvider) Stop() {
-	p.stop()
-}
+func (p *graphiteProvider) Stop() { _ = "STUB: not implemented"; return }

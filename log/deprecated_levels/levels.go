@@ -1,31 +1,10 @@
-// Package levels implements leveled logging on top of Go kit's log package.
-//
-// Deprecated: Use github.com/go-kit/log/level instead.
 package levels
 
 import "github.com/go-kit/log"
 
-// Levels provides a leveled logging wrapper around a logger. It has five
-// levels: debug, info, warning (warn), error, and critical (crit). If you
-// want a different set of levels, you can create your own levels type very
-// easily, and you can elide the configuration.
 type Levels struct {
 	logger   log.Logger
 	levelKey string
-
-	// We have a choice between storing level values in string fields or
-	// making a separate context for each level. When using string fields the
-	// Log method must combine the base context, the level data, and the
-	// logged keyvals; but the With method only requires updating one context.
-	// If we instead keep a separate context for each level the Log method
-	// must only append the new keyvals; but the With method would have to
-	// update all five contexts.
-
-	// Roughly speaking, storing multiple contexts breaks even if the ratio of
-	// Log/With calls is more than the number of levels. We have chosen to
-	// make the With method cheap and the Log method a bit more costly because
-	// we do not expect most applications to Log more than five times for each
-	// call to With.
 
 	debugValue string
 	infoValue  string
@@ -34,97 +13,33 @@ type Levels struct {
 	critValue  string
 }
 
-// New creates a new leveled logger, wrapping the passed logger.
 func New(logger log.Logger, options ...Option) Levels {
-	l := Levels{
-		logger:   logger,
-		levelKey: "level",
-
-		debugValue: "debug",
-		infoValue:  "info",
-		warnValue:  "warn",
-		errorValue: "error",
-		critValue:  "crit",
-	}
-	for _, option := range options {
-		option(&l)
-	}
-	return l
+	_ = "STUB: not implemented"
+	return *new(Levels)
 }
 
-// With returns a new leveled logger that includes keyvals in all log events.
-func (l Levels) With(keyvals ...interface{}) Levels {
-	return Levels{
-		logger:     log.With(l.logger, keyvals...),
-		levelKey:   l.levelKey,
-		debugValue: l.debugValue,
-		infoValue:  l.infoValue,
-		warnValue:  l.warnValue,
-		errorValue: l.errorValue,
-		critValue:  l.critValue,
-	}
-}
+func (l Levels) With(keyvals ...interface{}) Levels { _ = "STUB: not implemented"; return *new(Levels) }
 
-// Debug returns a debug level logger.
-func (l Levels) Debug() log.Logger {
-	return log.WithPrefix(l.logger, l.levelKey, l.debugValue)
-}
+func (l Levels) Debug() log.Logger { _ = "STUB: not implemented"; return *new(log.Logger) }
 
-// Info returns an info level logger.
-func (l Levels) Info() log.Logger {
-	return log.WithPrefix(l.logger, l.levelKey, l.infoValue)
-}
+func (l Levels) Info() log.Logger { _ = "STUB: not implemented"; return *new(log.Logger) }
 
-// Warn returns a warning level logger.
-func (l Levels) Warn() log.Logger {
-	return log.WithPrefix(l.logger, l.levelKey, l.warnValue)
-}
+func (l Levels) Warn() log.Logger { _ = "STUB: not implemented"; return *new(log.Logger) }
 
-// Error returns an error level logger.
-func (l Levels) Error() log.Logger {
-	return log.WithPrefix(l.logger, l.levelKey, l.errorValue)
-}
+func (l Levels) Error() log.Logger { _ = "STUB: not implemented"; return *new(log.Logger) }
 
-// Crit returns a critical level logger.
-func (l Levels) Crit() log.Logger {
-	return log.WithPrefix(l.logger, l.levelKey, l.critValue)
-}
+func (l Levels) Crit() log.Logger { _ = "STUB: not implemented"; return *new(log.Logger) }
 
-// Option sets a parameter for leveled loggers.
 type Option func(*Levels)
 
-// Key sets the key for the field used to indicate log level. By default,
-// the key is "level".
-func Key(key string) Option {
-	return func(l *Levels) { l.levelKey = key }
-}
+func Key(key string) Option { _ = "STUB: not implemented"; return *new(Option) }
 
-// DebugValue sets the value for the field used to indicate the debug log
-// level. By default, the value is "debug".
-func DebugValue(value string) Option {
-	return func(l *Levels) { l.debugValue = value }
-}
+func DebugValue(value string) Option { _ = "STUB: not implemented"; return *new(Option) }
 
-// InfoValue sets the value for the field used to indicate the info log level.
-// By default, the value is "info".
-func InfoValue(value string) Option {
-	return func(l *Levels) { l.infoValue = value }
-}
+func InfoValue(value string) Option { _ = "STUB: not implemented"; return *new(Option) }
 
-// WarnValue sets the value for the field used to indicate the warning log
-// level. By default, the value is "warn".
-func WarnValue(value string) Option {
-	return func(l *Levels) { l.warnValue = value }
-}
+func WarnValue(value string) Option { _ = "STUB: not implemented"; return *new(Option) }
 
-// ErrorValue sets the value for the field used to indicate the error log
-// level. By default, the value is "error".
-func ErrorValue(value string) Option {
-	return func(l *Levels) { l.errorValue = value }
-}
+func ErrorValue(value string) Option { _ = "STUB: not implemented"; return *new(Option) }
 
-// CritValue sets the value for the field used to indicate the critical log
-// level. By default, the value is "crit".
-func CritValue(value string) Option {
-	return func(l *Levels) { l.critValue = value }
-}
+func CritValue(value string) Option { _ = "STUB: not implemented"; return *new(Option) }
