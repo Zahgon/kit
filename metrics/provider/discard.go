@@ -2,23 +2,25 @@ package provider
 
 import (
 	"github.com/go-kit/kit/metrics"
-	"github.com/go-kit/kit/metrics/discard"
 )
 
 type discardProvider struct{}
 
-// NewDiscardProvider returns a provider that produces no-op metrics via the
-// discarding backend.
-func NewDiscardProvider() Provider { return discardProvider{} }
+func NewDiscardProvider() Provider { _ = "STUB: not implemented"; return *new(Provider) }
 
-// NewCounter implements Provider.
-func (discardProvider) NewCounter(string) metrics.Counter { return discard.NewCounter() }
+func (discardProvider) NewCounter(string) metrics.Counter {
+	_ = "STUB: not implemented"
+	return *new(metrics.Counter)
+}
 
-// NewGauge implements Provider.
-func (discardProvider) NewGauge(string) metrics.Gauge { return discard.NewGauge() }
+func (discardProvider) NewGauge(string) metrics.Gauge {
+	_ = "STUB: not implemented"
+	return *new(metrics.Gauge)
+}
 
-// NewHistogram implements Provider.
-func (discardProvider) NewHistogram(string, int) metrics.Histogram { return discard.NewHistogram() }
+func (discardProvider) NewHistogram(string, int) metrics.Histogram {
+	_ = "STUB: not implemented"
+	return *new(metrics.Histogram)
+}
 
-// Stop implements Provider.
-func (discardProvider) Stop() {}
+func (discardProvider) Stop() { _ = "STUB: not implemented"; return }

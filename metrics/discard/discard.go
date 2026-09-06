@@ -1,40 +1,38 @@
-// Package discard provides a no-op metrics backend.
 package discard
 
 import "github.com/go-kit/kit/metrics"
 
 type counter struct{}
 
-// NewCounter returns a new no-op counter.
-func NewCounter() metrics.Counter { return counter{} }
+func NewCounter() metrics.Counter { _ = "STUB: not implemented"; return *new(metrics.Counter) }
 
-// With implements Counter.
-func (c counter) With(labelValues ...string) metrics.Counter { return c }
+func (c counter) With(labelValues ...string) metrics.Counter {
+	_ = "STUB: not implemented"
+	return *new(metrics.Counter)
+}
 
-// Add implements Counter.
-func (c counter) Add(delta float64) {}
+func (c counter) Add(delta float64) { _ = "STUB: not implemented"; return }
 
 type gauge struct{}
 
-// NewGauge returns a new no-op gauge.
-func NewGauge() metrics.Gauge { return gauge{} }
+func NewGauge() metrics.Gauge { _ = "STUB: not implemented"; return *new(metrics.Gauge) }
 
-// With implements Gauge.
-func (g gauge) With(labelValues ...string) metrics.Gauge { return g }
+func (g gauge) With(labelValues ...string) metrics.Gauge {
+	_ = "STUB: not implemented"
+	return *new(metrics.Gauge)
+}
 
-// Set implements Gauge.
-func (g gauge) Set(value float64) {}
+func (g gauge) Set(value float64) { _ = "STUB: not implemented"; return }
 
-// Add implements metrics.Gauge.
-func (g gauge) Add(delta float64) {}
+func (g gauge) Add(delta float64) { _ = "STUB: not implemented"; return }
 
 type histogram struct{}
 
-// NewHistogram returns a new no-op histogram.
-func NewHistogram() metrics.Histogram { return histogram{} }
+func NewHistogram() metrics.Histogram { _ = "STUB: not implemented"; return *new(metrics.Histogram) }
 
-// With implements Histogram.
-func (h histogram) With(labelValues ...string) metrics.Histogram { return h }
+func (h histogram) With(labelValues ...string) metrics.Histogram {
+	_ = "STUB: not implemented"
+	return *new(metrics.Histogram)
+}
 
-// Observe implements histogram.
-func (h histogram) Observe(value float64) {}
+func (h histogram) Observe(value float64) { _ = "STUB: not implemented"; return }
